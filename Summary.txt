@@ -1,0 +1,107 @@
+
+***[Projects]
+dotnet new sln -o Funactivities
+cd Funactivities 
+dotnet new webapi -n API
+dotnet new classlib -n Application
+dotnet new classlib -n Domain
+dotnet new classlib -n Infracture
+dotnet new classlib -n Persistence
+
+dotnet sln add API/
+API> dotnet add reference ../Application
+
+***[Dependencies between projects]
+API -> Application, Infrastructure
+Infrastructure -> Application
+Application -> Domain, Persistence 
+Persistence -> Domain 
+
+
+
+***[DotNet CLI]
+dotnet --version 
+dotnet -h 
+dotnet watch run 
+dotnet new -l 
+dotnet new webapi -n API 
+dotnet new classlib -n Application 
+dotnet new classlib -n Domain 
+dotnet new classlib -n Persistence 
+
+dotnet sln add API/ 
+dotnet sln add Application/
+dotnet sln add Persistence/
+dotnet sln add Domain/ 
+// dotnet sln remove Domain/
+dotnet sln list 
+dotnet add reference ...
+dotnet remove reference ...
+dotnet list reference ...
+
+API> dotnet run 
+or dotnet watch run <-- attach file watcher. hot reload enabled.
+
+dotnet tool list --global
+dotnet tool update dotnet-ef -g
+dotnet tool install dotnet-ef -g 
+
+
+***[EF Migration]
+dotnet ef -h --> database, dbcontext, migrations, 
+dotnet ef migrations add InitialCreate -p Persistence -s API 
+--> create Persistence/Migrations/some files
+ef migrations remove 
+dotnet ef database -h --> drop, update
+dotnet ef migrations remove -p Persistence -s API
+
+
+***[DotNet 6 Features]
+<ImplicitUsings>enable</ImplicitUsings> --> Global Usings 
+<Nullable>enable</Nullable> --> 
+
+***[NuGet Packages]
+Microsoft.EntityFrameworkCore.Sqlite --> Persistence, API(x)
+Microsoft.EntityFrameworkCore ---> API
+Microsoft.EntityFrameworkCore.Design -> API --> for migrations
+
+***[VS Code]
+code .
+code . -r 
+settings> exlude> files:exlude > add **/bin, **/obj
+start up project
+file > auto save enabled 
+
+***[VS Code Extensions]
+C#
+
+
+
+***[Errors, Problems]
+Could not locate .NET Core project. Assets were not generated. 
+--> restart vs code.
+
+
+***[SQLite]
+shift + cmd + p: Sqlite:Open Database -> Sqlite explorer 
+
+***[Nullable]
+int? a = null;
+numbers.Add(a ??= 0); 
+if a is null then evaluate the right hand operand.
+Left hand operand must be a variable
+
+varialbe ??= expression; 
+
+
+***[Git]
+git init 
+dotnet new gitignore -> .gitignore  file 
+
+echo "# Funactivities" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/Mon8Cats/Funactivities.git
+git push -u origin main
